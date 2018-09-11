@@ -3,17 +3,20 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser'); 
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const recipeRoutes = require('./api/routes/recipes');
 const productRoutes = require('./api/routes/products');
 
 mongoose.connect('mongodb://localhost:27017/recipeDb',{ useNewUrlParser: true });
 
+
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use((res, req, next) => {
+app.use(cors());
+/*app.use((res, req, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin  , X-Requested-With, Content-Type, Accept, Authorization');
     if(req.method === 'OPTIONS') {
@@ -21,7 +24,7 @@ app.use((res, req, next) => {
         return res.status(200).json({})
     }
     next();
-});
+});*/
 
 
 app.use('/recipes', recipeRoutes);
