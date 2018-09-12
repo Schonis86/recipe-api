@@ -18,4 +18,33 @@ router.get('/:_id', (req, res) => {
         })
 });
 
+router.get('/findByName/:name', (req, res) => {
+    const name = req.params.name;
+    Ingredient.findOne({'Namn': name })
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: err})
+        })
+});
+
+
+router.get('/autoComplete-ingredient-name/:firstLetters', (req, res) => {
+    const start = req.params.firstLetters.toLowerCase();
+   Ingredient.find()
+       .exec()
+       .then(doc => {
+           const result = doc.filter(
+               ingredient => ingredient.Namn.toLocaleLowerCase().indexOf(start) == 0
+           ).map(
+               ingredient => ingredient.Namn
+           );
+           res.json(result);
+       })
+});
+
 module.exports = router;
