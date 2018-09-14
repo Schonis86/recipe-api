@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Ingredient = require('../models/ingredient.model');
+const RIngredient = require('../models/recipeIngredients.model');
 const mongoose = require('mongoose');
 
 
@@ -46,5 +47,19 @@ router.get('/autoComplete-ingredient-name/:firstLetters', (req, res) => {
            res.json(result);
        })
 });
+
+/*router.get('/', (req, res) => {
+
+    Ingredient.find()
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: err})
+        })
+});*/
 
 module.exports = router;
