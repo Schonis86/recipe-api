@@ -45,7 +45,7 @@ setIngredient()
      recipe = new Recipe({
           _id:  new mongoose.Types.ObjectId,
           ingredients: data,
-          name: req.body.Namn,
+          name: req.body.name,
           description: req.body.description,
           imageUrl: req.body.imageUrl,
           category: req.body.category
