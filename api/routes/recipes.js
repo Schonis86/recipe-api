@@ -19,17 +19,17 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.post('/',  (req, res, next) => {
+router.post('/', (req, res, next) => {
     let recipe = {};
 
- async function setIngredient() {
-  return await Promise.all(req.body.ingredients.map( async data => {
-      data.ingredient = await getFromDb(data.ingredient.Namn);
-      return data;
-      }))
+    async function saveIngredient() {
+        return await Promise.all(req.body.ingredients.map(async data => {
+            data.ingredient = await getIngredientFromDb(data.ingredient.Namn);
+            return data;
+        }))
     }
 
-    function getFromDb(data) {
+    function getIngredientFromDb(data) {
         return new Promise((resolve, reject) => {
             Ingredient.findOne({"Namn": data})
                 .then(data => {
@@ -40,23 +40,23 @@ router.post('/',  (req, res, next) => {
                 });
         })
     }
-setIngredient()
-  .then(data => {
-     recipe = new Recipe({
-          _id:  new mongoose.Types.ObjectId,
-          ingredients: data,
-          name: req.body.name,
-          description: req.body.description,
-          imageUrl: req.body.imageUrl,
-          category: req.body.category
-      });
-      recipe.save();
-      res.status(200).json({
-          message: 'det funkar'
-      })
-  });
 
-
+    saveIngredient()
+        .then(data => {
+            recipe = new Recipe({
+                _id: new mongoose.Types.ObjectId,
+                ingredients: data,
+                name: req.body.name,
+                description: req.body.description,
+                imageUrl: req.body.imageUrl,
+                category: req.body.category,
+                instructions: req.body.instructions
+            });
+            recipe.save();
+            res.status(200).json({
+                message: 'det funkar'
+            })
+        });
 
 
 });
