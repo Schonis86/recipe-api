@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const naringsvardeSchema = mongoose.Schema({
     Namn : String,
     Forkortning: String,
-    Varde : String,
+    Varde : number,
     Enhet : String,
     SenastAndrad: Date,
     Vardetyp : String,

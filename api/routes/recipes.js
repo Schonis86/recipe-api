@@ -22,7 +22,7 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
     let recipe = {};
 
-    async function saveIngredient() {
+    async function saveRecipe() {
         return await Promise.all(req.body.ingredients.map(async data => {
             data.ingredient = await getIngredientFromDb(data.ingredient.Namn);
             return data;
@@ -41,7 +41,7 @@ router.post('/', (req, res, next) => {
         })
     }
 
-    saveIngredient()
+    saveRecipe()
         .then(data => {
             recipe = new Recipe({
                 _id: new mongoose.Types.ObjectId,
@@ -74,7 +74,6 @@ router.get('/:_id', (req, res, next) => {
             console.log(err);
             res.status(500).json({error: err})
         })
-
 });
 
 
