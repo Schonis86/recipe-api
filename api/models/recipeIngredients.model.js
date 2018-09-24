@@ -6,7 +6,8 @@ const recipeIngredientSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     ingredient: {},
     qty: Number,
-    measure: String
+    measure: String,
+    qtyInGrams: Number
 
 
 });
