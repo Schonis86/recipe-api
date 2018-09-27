@@ -3,9 +3,8 @@ const router = express.Router();
 const Recipe = require('../models/recipe.model');
 const Ingredient = require('../models/ingredient.model');
 const mongoose = require('mongoose');
-const R_Ingredient = require('../models/recipeIngredients.model');
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     Recipe.find()
         .exec()
         .then(docs => {
@@ -19,7 +18,7 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
     let recipe = {};
 
     async function saveRecipe() {
@@ -61,8 +60,23 @@ router.post('/', (req, res, next) => {
 
 });
 
+router.get('/searchRecipeByName/:name', (req, res) => {
+    const name = req.params.name.toLowerCase();
+    Recipe.find()
+        .exec()
+        .then(doc => {
+            const result = [];
+             doc.filter(
+                recipe => recipe.name.toLocaleLowerCase().indexOf(name) === 0
+            ).map(
+                recipe => result.push({name: recipe.name, id: recipe._id})
+            );
+            res.json(result);
+        })
+});
 
-router.get('/:_id', (req, res, next) => {
+
+router.get('/:_id', (req, res) => {
     const id = req.params._id;
     Recipe.findById(id)
         .exec()
@@ -74,6 +88,13 @@ router.get('/:_id', (req, res, next) => {
             console.log(err);
             res.status(500).json({error: err})
         })
+});
+
+router.get('/searchRecipeByCategory/:category', (req, res) => {
+const category = req.params.category;
+Recipe.find({category: category})
+    .exec()
+    .then(doc => res.json(doc))
 });
 
 

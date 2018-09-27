@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', (res, req, next) => {
     res.status(201).json({
-        message: 'Products was fethed!'
+        message: 'Products was Fetched!'
     })
 });
 
