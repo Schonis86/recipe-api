@@ -66,10 +66,25 @@ router.get('/searchRecipeByName/:name', (req, res) => {
         .exec()
         .then(doc => {
             const result = [];
-             doc.filter(
+            doc.filter(
                 recipe => recipe.name.toLocaleLowerCase().indexOf(name) === 0
             ).map(
                 recipe => result.push({name: recipe.name, id: recipe._id})
+            );
+            res.json(result);
+        })
+});
+
+router.get('/searchByDescription/:value', (req, res) => {
+    const value = req.params.value.toLowerCase();
+    Recipe.find()
+        .exec()
+        .then(doc => {
+            const result = [];
+            doc.filter(
+                recipe => recipe.description.toLocaleLowerCase().includes(value)
+            ).map(
+                recipe => result.push(recipe)
             );
             res.json(result);
         })
@@ -91,10 +106,10 @@ router.get('/:_id', (req, res) => {
 });
 
 router.get('/searchRecipeByCategory/:category', (req, res) => {
-const category = req.params.category;
-Recipe.find({category: category})
-    .exec()
-    .then(doc => res.json(doc))
+    const category = req.params.category;
+    Recipe.find({category: category})
+        .exec()
+        .then(doc => res.json(doc))
 });
 
 
