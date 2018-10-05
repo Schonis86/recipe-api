@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
     })
 });
 
-/*router.post('/save', (req, res) => {
+router.post('/save', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
@@ -32,6 +32,6 @@ router.post('/', (req, res) => {
 
     user.save(user);
 
-});*/
+});
 
 module.exports = router;

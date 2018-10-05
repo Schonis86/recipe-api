@@ -90,7 +90,6 @@ router.get('/searchByDescription/:value', (req, res) => {
         })
 });
 
-
 router.get('/:_id', (req, res) => {
     const id = req.params._id;
     Recipe.findById(id)
@@ -111,6 +110,5 @@ router.get('/searchRecipeByCategory/:category', (req, res) => {
         .exec()
         .then(doc => res.json(doc))
 });
-
 
 module.exports = router;
