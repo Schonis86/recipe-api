@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="841e9759-89bd-4deb-ac21-7c96c62b6dcf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/routes/ingredients.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/ingredients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/routes/recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/recipes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/users.js" afterDir="false" />
-    </list>
+    <list default="true" id="841e9759-89bd-4deb-ac21-7c96c62b6dcf" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -206,12 +200,12 @@
       <workItem from="1538545675779" duration="476000" />
       <workItem from="1538739151967" duration="617000" />
       <workItem from="1538757827134" duration="1000" />
-      <workItem from="1538758149888" duration="882000" />
+      <workItem from="1538758149888" duration="1196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160297000" />
+    <option name="totallyTimeSpent" value="160611000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
